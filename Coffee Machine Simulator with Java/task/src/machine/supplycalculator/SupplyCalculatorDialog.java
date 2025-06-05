@@ -3,18 +3,15 @@ package machine.supplycalculator;
 import machine.cashregister.CashRegister;
 
 /**
- * The {@code SupplyCalculatorDialog} class is responsible for interacting with
- * the user via the console to determine how many cups of coffee can be made
- * based on the available supplies of water, milk, and coffee beans.
+ * Prints the current state of the coffee machine.
  * <p>
- * This class prompts the user to input the current supplies and the desired
- * number of cups. It then calculates whether the coffee machine can make the
- * requested amount, less, or even more cups than requested, and provides a
- * descriptive message back to the user.
+ * The class retrieves supply amounts from a {@link SupplyCalculator}
+ * and the available money from a {@link CashRegister} and then
+ * displays them to the console.
  * </p>
  * <p>
- * It relies on the {@link SupplyCalculator} class to perform the actual
- * calculation of how many cups can be made with the available ingredients.
+ * This dialog does not prompt the user for input or calculate
+ * how many cups can be prepared.
  * </p>
  *
  * @author Gabriel Lima
