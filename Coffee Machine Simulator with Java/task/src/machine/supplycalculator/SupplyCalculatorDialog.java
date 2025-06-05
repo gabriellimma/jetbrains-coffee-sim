@@ -32,12 +32,13 @@ public class SupplyCalculatorDialog {
         System.out.println(COFFEE_MACHINE_HAS);
 
         // print the supplies without leading indentation
-        System.out.printf(
-                "%d ml of water%n" +
-                "%d ml of milk%n" +
-                "%d g of coffee beans%n" +
-                "%d disposable cups%n" +
-                "$%d of money%n",
+        System.out.printf("""
+                %d ml of water
+                %d ml of milk
+                %d g of coffee beans
+                %d disposable cups
+                $%d of money
+                """.stripIndent(),
                 supply.getWaterSupply(),
                 supply.getMilkSupply(),
                 supply.getGramsCoffeeSupply(),
