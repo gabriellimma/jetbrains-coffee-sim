@@ -14,6 +14,7 @@ build
 !/Coffee Machine Simulator with Java/task/
 /Coffee Machine Simulator with Java/task/*
 !/Coffee Machine Simulator with Java/task/src
+!/Coffee Machine Simulator with Java/task/test
 
 # Project exclude paths
 /Topics/Combining constants with enum/Days of week/out/

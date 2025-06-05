@@ -66,7 +66,7 @@ public class SupplyCalculator {
      */
     public int calculateSuppliesBeforeSell(Coffee coffee) {
         int cupsByWater = waterSupply / coffee.getWaterNeeded();
-        int cupsByMilk = coffee.getMilkNeeded() != 0? milkSupply / coffee.getMilkNeeded() : 1;
+        int cupsByMilk = coffee.getMilkNeeded() != 0 ? milkSupply / coffee.getMilkNeeded() : Integer.MAX_VALUE;
         int cupsByCoffee = gramsCoffeeSupply / coffee.getCoffeeBeansNeeded();
         int disposableCupsNeeded = disposableCupsSupply / coffee.getDisposableCupsNeeded();
 
