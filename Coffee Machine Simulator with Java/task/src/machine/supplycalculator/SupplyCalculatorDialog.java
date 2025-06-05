@@ -30,14 +30,14 @@ public class SupplyCalculatorDialog {
     public void printCoffeeMachineSupplies(SupplyCalculator supply, CashRegister cashRegister) {
         String COFFEE_MACHINE_HAS = "The coffee machine has:";
         System.out.println(COFFEE_MACHINE_HAS);
-        System.out.printf("""
-                        %d ml of water
-                        %d ml of milk
-                        %d g of coffee beans
-                        %d disposable cups
-                        $%d of money
-                        
-                        """,
+
+        // print the supplies without leading indentation
+        System.out.printf(
+                "%d ml of water%n" +
+                "%d ml of milk%n" +
+                "%d g of coffee beans%n" +
+                "%d disposable cups%n" +
+                "$%d of money%n",
                 supply.getWaterSupply(),
                 supply.getMilkSupply(),
                 supply.getGramsCoffeeSupply(),
