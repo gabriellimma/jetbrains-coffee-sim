@@ -66,7 +66,12 @@ public class SupplyCalculator {
      */
     public int calculateSuppliesBeforeSell(Coffee coffee) {
         int cupsByWater = waterSupply / coffee.getWaterNeeded();
-        int cupsByMilk = coffee.getMilkNeeded() != 0? milkSupply / coffee.getMilkNeeded() : 1;
+        // if no milk is required for the recipe we shouldn't limit the amount of
+        // cups that can be made by milk supply, therefore use a sentinel value
+        // to effectively ignore milk in the minimum calculation
+        int cupsByMilk = coffee.getMilkNeeded() != 0
+                ? milkSupply / coffee.getMilkNeeded()
+                : Integer.MAX_VALUE;
         int cupsByCoffee = gramsCoffeeSupply / coffee.getCoffeeBeansNeeded();
         int disposableCupsNeeded = disposableCupsSupply / coffee.getDisposableCupsNeeded();
 
