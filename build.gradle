@@ -1,70 +1,24 @@
-apply plugin: 'hyperskill'
+plugins {
+    id 'java'
+}
 
 subprojects {
-    apply plugin: 'application'
     apply plugin: 'java'
 
-    def userJava = Integer.parseInt(JavaVersion.current().getMajorVersion())
-    def hsJava = Integer.parseInt(hs.java.version)
-    def testJava = Math.max(userJava, hsJava)
-
-    java.toolchain.languageVersion = JavaLanguageVersion.of(testJava)
-
-    compileJava {
-        javaCompiler = javaToolchains.compilerFor {
-            languageVersion = JavaLanguageVersion.of(userJava)
-        }
-    }
-
-    compileTestJava {
-        javaCompiler = javaToolchains.compilerFor {
-            languageVersion = JavaLanguageVersion.of(testJava)
-        }
+    sourceSets {
+        main.java.srcDirs = ['src']
+        test.java.srcDirs = ['test']
     }
 
     repositories {
         mavenCentral()
-        maven { url "https://packages.jetbrains.team/maven/p/academy/hyperskill-hspc" }
-		maven { url "https://jitpack.io" }
     }
 
     dependencies {
-        testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
-    }
-
-    configurations.all {
-        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-    }
-
-    sourceSets {
-        main.java.srcDir 'src'
-        test.java.srcDir 'test'
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     }
 
     test {
-        systemProperty "file.encoding", "utf-8"
-        outputs.upToDateWhen { false }
+        useJUnitPlatform()
     }
-
-    compileJava.options.encoding = 'utf-8'
-    tasks.withType(JavaCompile) {
-        options.encoding = 'utf-8'
-    }
-}
-
-project(':util') {
-    dependencies {
-        implementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
-    }
-}
-
-configure(subprojects.findAll {it.name != 'util'}) {
-    dependencies {
-        testImplementation project(':util').sourceSets.main.output
-        testImplementation project(':util').sourceSets.test.output
-    }
-}
-
-wrapper {
-    gradleVersion = hs.gradle.version
 }
